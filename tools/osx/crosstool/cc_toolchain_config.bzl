@@ -75,6 +75,10 @@ def _impl(ctx):
         target_system_name = "x86_64-apple-ios"
     elif (ctx.attr.cpu == "ios_sim_arm64"):
         target_system_name = "arm64-apple-ios-simulator"
+    elif (ctx.attr.cpu == "catalyst_x86_64"):
+        target_system_name = "x86_64-apple-ios-macabi"
+    elif (ctx.attr.cpu == "catalyst_arm64"):
+        target_system_name = "arm64-apple-ios-macabi"
     elif (ctx.attr.cpu == "watchos_arm64"):
         target_system_name = "arm64-apple-watchos-simulator"
     elif (ctx.attr.cpu == "darwin_x86_64"):
@@ -105,6 +109,10 @@ def _impl(ctx):
     host_system_name = "x86_64-apple-macosx"
     arch = ctx.attr.cpu.split("_", 1)[-1]
     if ctx.attr.cpu == "ios_sim_arm64":
+        arch = "arm64"
+    elif ctx.attr.cpu == "catalyst_x86_64":
+        arch = "x86_64"
+    elif ctx.attr.cpu == "catalyst_arm64":
         arch = "arm64"
 
     all_compile_actions = [
@@ -742,6 +750,8 @@ def _impl(ctx):
         ctx.attr.cpu == "ios_i386" or
         ctx.attr.cpu == "ios_x86_64" or
         ctx.attr.cpu == "ios_sim_arm64" or
+        ctx.attr.cpu == "catalyst_x86_64" or
+        ctx.attr.cpu == "catalyst_arm64" or
         ctx.attr.cpu == "watchos_arm64_32" or
         ctx.attr.cpu == "watchos_armv7k" or
         ctx.attr.cpu == "watchos_i386" or
@@ -928,6 +938,8 @@ def _impl(ctx):
     if (ctx.attr.cpu == "ios_i386" or
         ctx.attr.cpu == "ios_x86_64" or
         ctx.attr.cpu == "ios_sim_arm64" or
+        ctx.attr.cpu == "catalyst_x86_64" or
+        ctx.attr.cpu == "catalyst_arm64" or
         ctx.attr.cpu == "tvos_x86_64" or
         ctx.attr.cpu == "watchos_i386" or
         ctx.attr.cpu == "watchos_x86_64" or
@@ -998,6 +1010,8 @@ def _impl(ctx):
         ctx.attr.cpu == "ios_i386" or
         ctx.attr.cpu == "ios_x86_64" or
         ctx.attr.cpu == "ios_sim_arm64" or
+        ctx.attr.cpu == "catalyst_x86_64" or
+        ctx.attr.cpu == "catalyst_arm64" or
         ctx.attr.cpu == "tvos_arm64" or
         ctx.attr.cpu == "tvos_x86_64" or
         ctx.attr.cpu == "watchos_arm64_32" or
@@ -1262,7 +1276,9 @@ def _impl(ctx):
         )
     elif (ctx.attr.cpu == "ios_arm64" or
           ctx.attr.cpu == "ios_arm64e" or
-          ctx.attr.cpu == "ios_armv7"):
+          ctx.attr.cpu == "ios_armv7" or 
+          ctx.attr.cpu == "catalyst_x86_64" or
+          ctx.attr.cpu == "catalyst_arm64"):
         version_min_feature = feature(
             name = "version_min",
             flag_sets = [
@@ -1763,6 +1779,8 @@ def _impl(ctx):
         ctx.attr.cpu == "ios_i386" or
         ctx.attr.cpu == "ios_x86_64" or
         ctx.attr.cpu == "ios_sim_arm64" or
+        ctx.attr.cpu == "catalyst_x86_64" or
+        ctx.attr.cpu == "catalyst_arm64" or
         ctx.attr.cpu == "tvos_arm64" or
         ctx.attr.cpu == "tvos_x86_64" or
         ctx.attr.cpu == "watchos_arm64_32" or
@@ -2848,6 +2866,8 @@ def _impl(ctx):
         ctx.attr.cpu == "ios_i386" or
         ctx.attr.cpu == "ios_x86_64" or
         ctx.attr.cpu == "ios_sim_arm64" or
+        ctx.attr.cpu == "catalyst_x86_64" or
+        ctx.attr.cpu == "catalyst_arm64" or
         ctx.attr.cpu == "tvos_arm64" or
         ctx.attr.cpu == "tvos_x86_64" or
         ctx.attr.cpu == "watchos_arm64_32" or
