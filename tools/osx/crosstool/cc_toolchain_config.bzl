@@ -56,7 +56,7 @@ def _deterministic_libtool_flags(ctx):
 
 def _impl(ctx):
     if (ctx.attr.cpu == "ios_arm64"):
-        target_system_name = "arm64-apple-ios"
+        target_system_name = "arm64-apple-ios-macabi"
     elif (ctx.attr.cpu == "tvos_arm64"):
         target_system_name = "arm64-apple-tvos"
     elif (ctx.attr.cpu == "watchos_arm64_32"):
@@ -72,7 +72,7 @@ def _impl(ctx):
     elif (ctx.attr.cpu == "watchos_i386"):
         target_system_name = "i386-apple-watchos"
     elif (ctx.attr.cpu == "ios_x86_64"):
-        target_system_name = "x86_64-apple-ios"
+        target_system_name = "x86_64-apple-ios-macabi"
     elif (ctx.attr.cpu == "ios_sim_arm64"):
         target_system_name = "arm64-apple-ios-simulator"
     elif (ctx.attr.cpu == "catalyst_x86_64"):
